@@ -299,11 +299,19 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Trading modal service created to own modal open state
+- [x] Trading modal component created
+- [x] Modal connected to central market store through active symbol
+- [x] Asset page trade button connected to modal service
+- [x] Modal rendered globally from main layout
+- [x] Buy and sell visual state added
+- [x] Price and amount inputs added
+- [x] Estimated order value calculation added
+- [x] Backdrop close and close button behavior added
+- [x] Mock trade journal panel added
+- [x] Live history area added as placeholder for future live flow
+- [x] Trading modal tested from asset page
 
 ---
 

@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { MarketStoreService } from '../../core/store/market-store.service';
 import { EmptyStateComponent } from '../../shared/components/empty-state/empty-state';
 import { formatPrice, getChangeMeta } from '../../shared/utils/price-helpers';
+import { TradingModalService } from '../../core/services/trading-modal.service';
 
 const ASSET_DESCRIPTIONS: Record<string, string> = {
   btc: 'بیت‌کوین اولین و شناخته‌شده‌ترین ارز دیجیتال بازار است و معمولاً نقش رهبر بازار را دارد.',
@@ -27,6 +28,7 @@ const ASSET_DESCRIPTIONS: Record<string, string> = {
 })
 export class AssetComponent {
   private route = inject(ActivatedRoute);
+  private tradingModal = inject(TradingModalService);
   marketStore = inject(MarketStoreService);
 
   symbol = toSignal(
@@ -82,6 +84,12 @@ export class AssetComponent {
   }
 
   openTradeModal(): void {
-    console.log('Trading modal will be implemented later for:', this.symbol());
+    const symbol = this.symbol();
+
+    if (!symbol || !this.coin()) {
+      return;
+    }
+
+    this.tradingModal.open(symbol);
   }
 }
