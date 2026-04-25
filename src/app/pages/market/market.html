@@ -1,4 +1,45 @@
-<section class="space-y-4">
-  <h1 class="text-4xl font-black">مارکت</h1>
-  <p class="text-gray-500 dark:text-gray-400">پوسته اولیه صفحه مارکت آماده شد.</p>
+<section class="space-y-6">
+  <header class="flex flex-col md:flex-row justify-between items-center gap-6 mb-8">
+    <div class="space-y-4">
+      <div>
+        <h2 class="text-4xl font-black mb-2 text-gray-900 dark:text-white">بازار ارزها</h2>
+
+        <p class="text-gray-500 dark:text-gray-400 text-sm">
+          قیمت‌های لحظه‌ای و جستجوی سریع بین ارزها
+        </p>
+      </div>
+
+      <app-connection-badge />
+    </div>
+
+    <div class="relative w-full md:w-96">
+      <input
+        type="text"
+        placeholder="جستجو..."
+        [value]="marketStore.searchQuery()"
+        (input)="onSearchChange($event)"
+        class="w-full p-4 bg-white dark:bg-white/5 border border-gray-300 dark:border-white/10 rounded-2xl focus:outline-none focus:border-yellow-500 transition-all text-gray-900 dark:text-white"
+      />
+
+      @if (marketStore.searchQuery()) {
+        <button
+          type="button"
+          class="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-gray-400 hover:text-yellow-500"
+          (click)="clearSearch()"
+        >
+          پاک کردن
+        </button>
+      }
+    </div>
+  </header>
+
+  @if (marketStore.filteredCoins().length) {
+    <app-coin-list [coins]="marketStore.filteredCoins()" />
+  } @else {
+    <app-empty-state
+      icon="🔎"
+      title="ارزی پیدا نشد"
+      description="عبارت جستجو را تغییر بده یا بعداً دوباره امتحان کن."
+    />
+  }
 </section>

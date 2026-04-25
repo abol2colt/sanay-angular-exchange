@@ -1,6 +1,7 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { MarketDataLoaderService } from './core/services/market-data-loader.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +11,11 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   private platformId = inject(PLATFORM_ID);
+  private marketDataLoader = inject(MarketDataLoaderService);
 
   constructor() {
+    this.marketDataLoader.loadOnce();
+
     if (!isPlatformBrowser(this.platformId)) {
       return;
     }

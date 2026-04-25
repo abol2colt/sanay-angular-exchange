@@ -193,11 +193,18 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Market data loader created to hydrate store once
+- [x] Initial market data wired at app startup
+- [x] Market page shell created
+- [x] Connection badge added to market header
+- [x] Search input connected to central market store
+- [x] Filtered market view rendered from store state
+- [x] Coin list component reused for market results
+- [x] Empty state component reused for no-result search state
+- [x] Clear search action added
+- [x] Asset row navigation verified through shared coin row
+- [x] Market page tested successfully in browser
 
 ---
 
