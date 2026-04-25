@@ -1,0 +1,15 @@
+<div class="relative">
+  @if (connectionStatus().isLive) {
+    <span class="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-green-500 animate-ping"></span>
+  }
+
+  <div [class]="getWrapperClasses()">
+    <span [class]="getDotClasses()"></span>
+
+    <span>{{ getProviderLabel() }}</span>
+
+    <span class="rounded-full bg-white/60 dark:bg-white/10 px-2 py-1 text-[11px]">
+      {{ getPhaseLabel() }}
+    </span>
+  </div>
+</div>
