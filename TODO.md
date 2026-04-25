@@ -1,4 +1,12 @@
-# SANAY ANGULAR — BRANCH TODO ROADMAP
+# SANAY ANGULAR — CORRECTED BRANCH TODO ROADMAP
+
+## Current Branch Reality
+
+- `feat/foundation-layout-routing`  
+  این برنچ برای ساخت پایه برنامه بود و گزارش‌های مربوط به پوسته، مسیرها، نوار بالا، حالت روشن و تیره، اتصال تلوین و ایمن‌سازی کدهای مخصوص مرورگر باید فقط زیر همین برنچ باشد.
+
+- `feat/core-models-and-store`  
+  این برنچ برای مدل‌ها، سرویس مرکزی داده، وضعیت واکنشی و داده اولیه بازار بود. چون داده اولیه بازار در همین مرحله ساخته شده،
 
 ## Branch: `feat/foundation-layout-routing`
 
@@ -22,15 +30,26 @@
 - Add theme toggle with local storage  
   تغییر حالت روشن و تیره ساخته شود و انتخاب کاربر ذخیره گردد تا در ورود بعدی همان حالت قبلی حفظ شود.
 
+- Guard browser-only theme logic  
+  دسترسی به حافظه مرورگر و سند صفحه فقط زمانی انجام شود که برنامه واقعاً در مرورگر اجرا می‌شود.
+
+- Connect Tailwind styling  
+  تلوین به استایل‌های سراسری برنامه وصل شود تا کلاس‌های طراحی در صفحه‌ها درست اعمال شوند.
+
 ### Work Log
 
 - [x] Branch started
+- [x] Tailwind installed and connected to Angular global styles
 - [x] Root app simplified to route tree rendering
-- [x] Main layout shell created with navbar and page container
-- [x] Child route structure added under main layout
+- [x] Main layout shell created with top navigation and page container
+- [x] Child routing structure added under main layout
+- [x] Home, market, watchlist, asset, and login routes wired
+- [x] Route fallback redirected to home
 - [x] Theme toggle added with local storage persistence
-- [x] Fallback route redirected to home
-- [x] Placeholder pages wired for home, market, watchlist, asset, and login
+- [x] Browser-only theme logic guarded for server rendering safety
+- [x] Placeholder pages created to make all route imports valid
+
+---
 
 ## Branch: `feat/core-models-and-store`
 
@@ -57,48 +76,25 @@
 - Add provider and connection state  
   منبع داده و وضعیت اتصال در سرویس مرکزی نگه داشته شوند تا همه بخش‌های برنامه برداشت یکسانی از وضعیت زنده داشته باشند.
 
-### Work Log
-
-- [x] Branch started
-- [x] Coin model created
-- [x] Connection status model created
-- [x] Default connection status extracted
-- [x] Mock market data service created
-- [x] Market store service created with signal-based state
-- [x] Safe read paths added for filtered coins and watchlist
-- [x] Controlled write methods added for price, search, provider, and watchlist
-
-## Branch: `feat/mock-data-loader`
-
-### Tasks
-
 - Add mock market dataset  
   داده اولیه بازار با همان دارایی‌های پروژه قبلی وارد شود تا پایه نمایش بازار از همان ابتدا آماده باشد.
 
 - Build mock market data service  
   سرویس داده اولیه ساخته شود تا بارگذاری داده‌های آغازین از منطق صفحه‌ها جدا بماند.
 
-- Hydrate initial market state  
-  داده اولیه وارد سرویس مرکزی شود تا صفحه‌ها از همان منبع واحد استفاده کنند.
-
-- Add price history hydration  
-  اگر سابقه قیمت از قبل ذخیره شده بود، همان داده برای شروع دوباره خوانده شود تا تجربه کاربر پایدارتر بماند.
-
-- Add watchlist hydration  
-  اگر دیده‌بان از قبل ذخیره شده بود، در شروع برنامه دوباره بازیابی شود تا کاربر انتخاب‌های قبلی خود را از دست ندهد.
-
 ### Work Log
 
 - [x] Branch started
-- [x] Tailwind installed and connected to Angular global styles
-- [x] Root app simplified to route tree rendering
-- [x] Main layout shell created with top navigation and page container
-- [x] Child routing structure added under main layout
-- [x] Home, market, watchlist, asset, and login routes wired
-- [x] Route fallback redirected to home
-- [x] Theme toggle added with local storage persistence
-- [x] Browser-only theme logic guarded for server rendering safety
-- [x] Placeholder pages created to make all route imports valid
+- [x] Coin model created
+- [x] Connection status model created
+- [x] Default connection status extracted
+- [x] Mock market dataset added
+- [x] Mock market data service created
+- [x] Market store service created with signal-based state
+- [x] Safe read paths added for filtered coins and watchlist
+- [x] Controlled write methods added for price, search, provider, and watchlist
+
+---
 
 ## Branch: `feat/home-page-shell`
 
@@ -106,6 +102,9 @@
 
 - Build home page route  
   صفحه خانه به عنوان ورودی اصلی برنامه ساخته شود تا تجربه نخست کاربر از این بخش آغاز شود.
+
+- Build page composer  
+  صفحه خانه فقط بخش‌ها را کنار هم بچیند و وارد جزئیات نمایشی هر بخش نشود.
 
 - Build hero section  
   بخش بالایی خانه با عنوان اصلی، متن توضیحی و دکمه‌های اصلی ساخته شود تا هویت محصول از ابتدا روشن باشد.
@@ -119,16 +118,24 @@
 - Add preview asset navigation  
   هر دارایی در پیش‌نمایش خانه به صفحه جزئیات خودش برود تا مسیر حرکت کاربر طبیعی و مستقیم باشد.
 
+- Connect preview data to market store  
+  داده پیش‌نمایش بازار از سرویس مرکزی خوانده شود تا صفحه خانه هم از منبع یکتای داده استفاده کند.
+
 - Keep home lightweight  
   صفحه خانه ساده و سبک نگه داشته شود و از شلوغی و ریزه‌کاری زودهنگام دور بماند.
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Home page composer created
+- [x] Hero section built from the previous Sanay product structure
+- [x] Features section rebuilt with summary strip and feature cards
+- [x] Market preview section created with selected coin cards
+- [x] Preview asset links wired to asset route
+- [x] Home page connected to market store preview data
+- [x] Motion-heavy behavior intentionally excluded from this phase
+
+---
 
 ## Branch: `feat/shared-market-components`
 
@@ -151,11 +158,19 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Coin badge color helper created
+- [x] Price helper created for shared price and change formatting
+- [x] Coin row component created
+- [x] Coin row connected to watchlist toggle behavior
+- [x] Coin row navigation wired to asset route
+- [x] Coin list component created as a reusable list wrapper
+- [x] Empty state component created for reusable empty views
+- [x] Connection badge component created
+- [x] Connection badge connected to central market store state
+- [x] Shared market UI components kept independent from page-level logic
+
+---
 
 ## Branch: `feat/market-page`
 
@@ -184,6 +199,8 @@
 - [ ]
 - [ ]
 
+---
+
 ## Branch: `feat/watchlist-page`
 
 ### Tasks
@@ -207,6 +224,8 @@
 - [ ]
 - [ ]
 - [ ]
+
+---
 
 ## Branch: `feat/asset-page`
 
@@ -238,6 +257,8 @@
 - [ ]
 - [ ]
 
+---
+
 ## Branch: `feat/trading-modal`
 
 ### Tasks
@@ -268,6 +289,8 @@
 - [ ]
 - [ ]
 
+---
+
 ## Branch: `feat/fake-live-flow`
 
 ### Tasks
@@ -294,6 +317,8 @@
 - [ ]
 - [ ]
 - [ ]
+
+---
 
 ## Branch: `feat/live-binance-adapter`
 
@@ -322,6 +347,8 @@
 - [ ]
 - [ ]
 
+---
+
 ## Branch: `feat/live-nobitex-fallback`
 
 ### Tasks
@@ -346,6 +373,8 @@
 - [ ]
 - [ ]
 
+---
+
 ## Branch: `feat/fake-fallback-engine`
 
 ### Tasks
@@ -366,6 +395,8 @@
 - [ ]
 - [ ]
 - [ ]
+
+---
 
 ## Branch: `feat/connection-orchestration`
 
@@ -394,6 +425,8 @@
 - [ ]
 - [ ]
 
+---
+
 ## Branch: `feat/login-shell`
 
 ### Tasks
@@ -414,6 +447,8 @@
 - [ ]
 - [ ]
 - [ ]
+
+---
 
 ## Branch: `chore/final-polish-and-docs`
 
@@ -438,6 +473,8 @@
 - [ ]
 - [ ]
 - [ ]
+
+---
 
 ## Working Principles
 
