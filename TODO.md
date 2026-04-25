@@ -226,11 +226,14 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Watchlist page shell created
+- [x] Watchlist page connected to central market store
+- [x] Watchlist coins rendered through shared coin list component
+- [x] Empty state reused for empty watchlist state
+- [x] Watchlist toggle flow verified from market to watchlist
+- [x] Asset navigation verified from watchlist rows
+- [x] Watchlist page tested successfully in browser
 
 ---
 
