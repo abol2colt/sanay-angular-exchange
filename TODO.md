@@ -261,11 +261,17 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Asset route param connected to asset page state
+- [x] Asset coin lookup connected to central market store
+- [x] Asset not-found state handled with reusable empty state
+- [x] Asset header created with name, symbol, provider, price, and change
+- [x] Asset description section added
+- [x] Chart placeholder added for future chart integration
+- [x] Asset info cards added for provider, connection status, symbol, and history placeholder
+- [x] Trade entry button added as placeholder for trading modal branch
+- [x] Back to market navigation added
+- [x] Asset page tested with valid and invalid symbols
 
 ---
 
