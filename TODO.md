@@ -89,11 +89,16 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Tailwind installed and connected to Angular global styles
+- [x] Root app simplified to route tree rendering
+- [x] Main layout shell created with top navigation and page container
+- [x] Child routing structure added under main layout
+- [x] Home, market, watchlist, asset, and login routes wired
+- [x] Route fallback redirected to home
+- [x] Theme toggle added with local storage persistence
+- [x] Browser-only theme logic guarded for server rendering safety
+- [x] Placeholder pages created to make all route imports valid
 
 ## Branch: `feat/home-page-shell`
 
