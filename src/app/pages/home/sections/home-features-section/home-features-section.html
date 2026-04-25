@@ -1,0 +1,27 @@
+<section id="home-features-section" class="home-section-shell">
+  <div class="home-section-container">
+    <div class="home-section-copy">
+      <h2 class="home-section-title">امنیت، اعتماد، سرعت</h2>
+      <p class="home-section-text">
+        Sanay فقط ظاهر یک صرافی را نمی‌سازد؛ تجربه‌ای می‌سازد که از نظر ساختار، وضوح و جریان محصول
+        حس حرفه‌ای‌تری بدهد.
+      </p>
+    </div>
+
+    <div class="home-feature-summary-strip">
+      @for (item of summaryItems; track item) {
+        <span class="home-feature-summary-chip">{{ item }}</span>
+      }
+    </div>
+
+    <div class="home-preview-grid">
+      @for (feature of features; track feature.title) {
+        <article class="home-feature-card home-feature-card-premium">
+          <span class="home-feature-eyebrow">{{ feature.eyebrow }}</span>
+          <h3 class="home-feature-title">{{ feature.title }}</h3>
+          <p class="home-feature-text">{{ feature.text }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

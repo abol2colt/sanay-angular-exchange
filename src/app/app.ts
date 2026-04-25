@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -8,7 +9,13 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.scss',
 })
 export class App {
+  private platformId = inject(PLATFORM_ID);
+
   constructor() {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+
     const savedTheme = localStorage.getItem('theme') || 'dark';
 
     if (savedTheme === 'dark') {
