@@ -59,11 +59,14 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Coin model created
+- [x] Connection status model created
+- [x] Default connection status extracted
+- [x] Mock market data service created
+- [x] Market store service created with signal-based state
+- [x] Safe read paths added for filtered coins and watchlist
+- [x] Controlled write methods added for price, search, provider, and watchlist
 
 ## Branch: `feat/mock-data-loader`
 
