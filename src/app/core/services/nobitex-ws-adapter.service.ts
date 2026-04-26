@@ -25,7 +25,7 @@ type NobitexSubscription = {
   subscribe(): void;
 };
 
-type NobitexClient = {
+export type NobitexClient = {
   on(eventName: 'connected' | 'disconnected' | 'error', handler: (context?: unknown) => void): void;
   newSubscription(channel: string): NobitexSubscription;
   connect(): void;
