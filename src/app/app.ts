@@ -2,8 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { MarketDataLoaderService } from './core/services/market-data-loader.service';
-import { FakeLiveFlowService } from './core/services/fake-live-flow.service';
-
+import { ConnectionOrchestrationService } from './core/services/connection-orchestration.service';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet],
@@ -13,11 +12,11 @@ import { FakeLiveFlowService } from './core/services/fake-live-flow.service';
 export class App {
   private platformId = inject(PLATFORM_ID);
   private marketDataLoader = inject(MarketDataLoaderService);
-  private fakeLiveFlow = inject(FakeLiveFlowService);
+  private connectionOrchestration = inject(ConnectionOrchestrationService);
 
   constructor() {
     this.marketDataLoader.loadOnce();
-    this.fakeLiveFlow.start();
+    this.connectionOrchestration.start();
 
     if (!isPlatformBrowser(this.platformId)) {
       return;
