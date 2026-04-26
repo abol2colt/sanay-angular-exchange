@@ -370,11 +370,16 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Live ticker model created for shared provider output
+- [x] Binance WebSocket adapter created
+- [x] Binance combined stream URL builder added
+- [x] Binance ticker message parsing added
+- [x] Binance pair symbols normalized back to internal asset symbols
+- [x] Browser-only WebSocket guard added
+- [x] Adapter kept independent from market store state
+- [x] Disconnect method added for future orchestration cleanup
+- [x] Build verified without wiring adapter directly to app startup
 
 ---
 
