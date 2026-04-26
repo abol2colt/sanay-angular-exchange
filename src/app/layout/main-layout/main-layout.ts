@@ -1,10 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
 import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { TradingModalComponent } from '../../shared/components/trading-modal/trading-modal';
 
 @Component({
   selector: 'app-main-layout',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, TradingModalComponent],
   templateUrl: './main-layout.html',
   styleUrl: './main-layout.scss',
 })
