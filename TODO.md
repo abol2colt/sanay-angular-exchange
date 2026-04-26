@@ -336,11 +336,16 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Fake live flow service created
+- [x] Fake live flow guarded against duplicate intervals
+- [x] Fake provider and degraded connection status wired to market store
+- [x] Fake price tick updates connected to central market store
+- [x] Fake change tick updates connected to central market store
+- [x] Market page verified with changing fake prices
+- [x] Watchlist page verified with changing fake prices
+- [x] Asset page verified with changing fake prices
+- [x] Trading modal verified against store-driven fake prices
 
 ---
 
