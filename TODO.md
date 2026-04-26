@@ -415,29 +415,6 @@
 
 ---
 
-## Branch: `feat/fake-fallback-engine`
-
-### Tasks
-
-- Build fake fallback engine  
-  اگر هیچ منبع زنده‌ای در دسترس نبود، موتور نمایشی فعال شود تا تجربه بازار کاملاً متوقف نشود.
-
-- Add degraded mode state  
-  وضعیت افت کیفیت اتصال نگه داشته شود تا رابط کاربر بتواند این وضعیت را شفاف نشان دهد.
-
-- Route fake updates through central path  
-  داده نمایشی از همان مسیر مرکزی عبور کند تا رفتار همه منبع‌ها یکدست بماند.
-
-### Work Log
-
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-
----
-
 ## Branch: `feat/connection-orchestration`
 
 ### Tasks
