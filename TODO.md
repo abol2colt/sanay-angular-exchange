@@ -401,11 +401,17 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Nobitex WebSocket adapter created
+- [x] Centrifuge dependency checked for Nobitex transport
+- [x] Nobitex market channel builder added
+- [x] Nobitex publication parser added
+- [x] Nobitex ticker output normalized to shared LiveTicker model
+- [x] Browser-only connection guard added
+- [x] Adapter kept independent from market store state
+- [x] Failure callbacks added for future fallback orchestration
+- [x] Disconnect method added for future cleanup
+- [x] Build verified without wiring adapter directly to app startup
 
 ---
 
@@ -460,6 +466,36 @@
 - [ ]
 
 ---
+
+## Branch: `feat/theme-service-hardening`
+
+### Tasks
+
+- Build theme service  
+  منطق حالت روشن و تیره از کامپوننت‌ها جدا شود و در یک سرویس مرکزی قرار بگیرد.
+
+- Move local storage theme access into service  
+  خواندن و ذخیره حالت کاربر فقط از مسیر سرویس انجام شود.
+
+- Guard browser-only theme logic  
+  دسترسی به حافظه مرورگر و سند صفحه فقط در مرورگر انجام شود.
+
+- Expose readable theme state  
+  وضعیت فعلی حالت روشن یا تیره به شکل خواندنی در اختیار بخش‌های دیداری قرار بگیرد.
+
+- Connect layout theme button to service  
+  دکمه تغییر حالت فقط سرویس را صدا بزند و خودش منطق نگه ندارد.
+
+- Verify theme persistence  
+  بعد از تازه‌سازی صفحه، حالت انتخاب‌شده کاربر باید حفظ شود.
+
+### Work Log
+
+- [ ] Branch started
+- [ ]
+- [ ]
+- [ ]
+- [ ]
 
 ## Branch: `feat/login-shell`
 
