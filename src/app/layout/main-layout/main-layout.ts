@@ -1,5 +1,5 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, inject, PLATFORM_ID } from '@angular/core';
+import { ThemeService } from '../../core/services/theme.service';
+import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { TradingModalComponent } from '../../shared/components/trading-modal/trading-modal';
 
@@ -10,24 +10,11 @@ import { TradingModalComponent } from '../../shared/components/trading-modal/tra
   styleUrl: './main-layout.scss',
 })
 export class MainLayoutComponent {
-  private platformId = inject(PLATFORM_ID);
+  private themeService = inject(ThemeService);
 
-  isDarkMode(): boolean {
-    if (!isPlatformBrowser(this.platformId)) {
-      return true;
-    }
-
-    return document.documentElement.classList.contains('dark');
-  }
+  isDarkMode = this.themeService.isDarkMode;
 
   toggleTheme(): void {
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
-    }
-
-    const html = document.documentElement;
-    const isDark = html.classList.toggle('dark');
-
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    this.themeService.toggle();
   }
 }
