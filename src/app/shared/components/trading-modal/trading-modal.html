@@ -1,30 +1,36 @@
 @if (tradingModal.isOpen() && coin(); as coin) {
   <div
-    class="fixed inset-0 z-[200] bg-black/70 backdrop-blur-xl p-4 md:p-6 flex items-center justify-center"
+    class="fixed inset-0 z-[200] bg-gray-900/40 dark:bg-black/70 backdrop-blur-xl p-4 md:p-6 flex items-center justify-center"
     [attr.data-coin-id]="coin.symbol"
     (click)="closeFromBackdrop($event)"
   >
     <section
-      class="w-full max-w-6xl max-h-[92svh] overflow-hidden rounded-[2.5rem] border border-white/10 bg-[#0b0e11] text-white shadow-2xl"
+      class="w-full max-w-6xl rounded-[2.5rem] border border-gray-200 dark:border-white/10 bg-white dark:bg-[#0b0e11] text-gray-900 dark:text-white shadow-2xl"
     >
-      <header class="flex items-center justify-between gap-4 border-b border-white/10 p-5 md:p-6">
+      <header
+        class="flex items-center justify-between gap-4 border-b border-gray-200 dark:border-white/10 p-5 md:p-6 bg-gray-50/80 dark:bg-white/[0.03]"
+      >
         <div class="flex items-center gap-4">
           <div
-            class="w-12 h-12 rounded-2xl bg-yellow-500 text-black flex items-center justify-center font-black text-xl"
+            class="w-12 h-12 rounded-2xl bg-yellow-500 text-black flex items-center justify-center font-black text-xl shadow-lg shadow-yellow-500/20"
           >
             {{ displaySymbol().charAt(0) || '?' }}
           </div>
 
           <div>
-            <h3 class="text-xl md:text-2xl font-black">معامله {{ coin.name }}</h3>
+            <h3 class="text-xl md:text-2xl font-black text-gray-900 dark:text-white">
+              معامله {{ coin.name }}
+            </h3>
 
-            <p class="text-sm text-gray-400">{{ displaySymbol() }} / USDT — نسخه نمایشی</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+              {{ displaySymbol() }} / USDT — نسخه نمایشی
+            </p>
           </div>
         </div>
 
         <button
           type="button"
-          class="w-11 h-11 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all"
+          class="w-11 h-11 rounded-2xl bg-gray-100 hover:bg-gray-200 dark:bg-white/5 dark:hover:bg-white/10 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-white transition-all"
           (click)="close()"
         >
           ✕
@@ -32,21 +38,28 @@
       </header>
 
       <div
-        class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-5 p-5 md:p-6 overflow-y-auto max-h-[calc(92svh-92px)]"
+        class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-5 p-5 md:p-6 overflow-y-auto max-h-[calc(92svh-92px)] bg-white dark:bg-[#0b0e11]"
       >
         <div class="space-y-4">
           <div
-            class="rounded-[2rem] border border-white/10 bg-white/5 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.24)]"
+            class="rounded-[2rem] border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-5"
           >
             <div class="flex items-center justify-between mb-3">
-              <span class="text-xs font-bold tracking-[0.16em] text-gray-400"> قیمت لحظه‌ای </span>
+              <span class="text-xs font-bold tracking-[0.16em] text-gray-500 dark:text-gray-400">
+                قیمت لحظه‌ای
+              </span>
 
-              <span class="text-[11px] px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-400">
+              <span
+                class="text-[11px] px-3 py-1 rounded-full bg-yellow-500/15 text-yellow-700 dark:text-yellow-400 font-bold"
+              >
                 نمایشی
               </span>
             </div>
 
-            <div class="text-white text-4xl md:text-5xl font-black tracking-tight" dir="ltr">
+            <div
+              class="text-gray-900 dark:text-white text-4xl md:text-5xl font-black tracking-tight"
+              dir="ltr"
+            >
               ${{ formatPrice(currentPrice()) }}
             </div>
           </div>
@@ -54,11 +67,11 @@
           <div class="grid grid-cols-2 gap-3">
             <button
               type="button"
-              class="py-4 rounded-2xl border border-white/10 font-black transition-all"
+              class="py-4 rounded-2xl border font-black transition-all"
               [ngClass]="
                 tradeSide() === 'buy'
-                  ? 'bg-green-500/20 text-green-300'
-                  : 'bg-white/5 hover:bg-white/10 text-white'
+                  ? 'border-green-400/40 bg-green-500/15 text-green-700 dark:text-green-300'
+                  : 'border-gray-200 dark:border-white/10 bg-gray-50 hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10 text-gray-700 dark:text-white'
               "
               (click)="setTradeSide('buy')"
             >
@@ -67,11 +80,11 @@
 
             <button
               type="button"
-              class="py-4 rounded-2xl border border-white/10 font-black transition-all"
+              class="py-4 rounded-2xl border font-black transition-all"
               [ngClass]="
                 tradeSide() === 'sell'
-                  ? 'bg-red-500/20 text-red-300'
-                  : 'bg-white/5 hover:bg-white/10 text-white'
+                  ? 'border-red-400/40 bg-red-500/15 text-red-700 dark:text-red-300'
+                  : 'border-gray-200 dark:border-white/10 bg-gray-50 hover:bg-gray-100 dark:bg-white/5 dark:hover:bg-white/10 text-gray-700 dark:text-white'
               "
               (click)="setTradeSide('sell')"
             >
@@ -79,21 +92,25 @@
             </button>
           </div>
 
-          <div class="space-y-4 rounded-[2rem] border border-white/10 bg-white/5 p-5">
+          <div
+            class="space-y-4 rounded-[2rem] border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-5"
+          >
             <label class="block">
-              <span class="text-xs text-gray-400 font-bold">قیمت</span>
+              <span class="text-xs text-gray-500 dark:text-gray-400 font-bold">قیمت</span>
 
               <input
                 type="number"
                 step="any"
                 [value]="priceInput() || currentPrice()"
                 (input)="updatePrice($event)"
-                class="mt-2 w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-4 text-white outline-none"
+                class="mt-2 w-full rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black/20 px-4 py-4 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 outline-none focus:border-yellow-500/60"
               />
             </label>
 
             <label class="block">
-              <span class="text-xs text-gray-400 font-bold"> مقدار {{ displaySymbol() }} </span>
+              <span class="text-xs text-gray-500 dark:text-gray-400 font-bold">
+                مقدار {{ displaySymbol() }}
+              </span>
 
               <input
                 type="number"
@@ -101,23 +118,23 @@
                 placeholder="مثلاً 0.25"
                 [value]="amountInput() || ''"
                 (input)="updateAmount($event)"
-                class="mt-2 w-full rounded-2xl border border-white/10 bg-black/20 px-4 py-4 text-white outline-none"
+                class="mt-2 w-full rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black/20 px-4 py-4 text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-500 outline-none focus:border-yellow-500/60 transition-colors"
               />
             </label>
 
             <div
-              class="rounded-2xl border border-white/10 bg-black/20 p-4 flex items-center justify-between"
+              class="rounded-2xl border border-gray-200 dark:border-white/10 bg-white dark:bg-black/20 p-4 flex items-center justify-between"
             >
-              <span class="text-sm text-gray-400">ارزش تقریبی سفارش</span>
+              <span class="text-sm text-gray-500 dark:text-gray-400">ارزش تقریبی سفارش</span>
 
-              <strong class="text-lg text-white" dir="ltr">
+              <strong class="text-lg text-gray-900 dark:text-white" dir="ltr">
                 ${{ formatPrice(totalValue()) }}
               </strong>
             </div>
 
             <button
               type="button"
-              class="w-full py-4 rounded-2xl bg-yellow-500 hover:bg-yellow-400 text-black font-black transition-all"
+              class="w-full py-4 rounded-2xl bg-yellow-500 hover:bg-yellow-400 text-black font-black transition-all shadow-lg shadow-yellow-500/20"
             >
               ثبت سفارش نمایشی
             </button>
@@ -125,43 +142,51 @@
         </div>
 
         <div class="grid grid-cols-1 gap-5">
-          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+          <div
+            class="rounded-[2rem] border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-5"
+          >
             <div class="flex items-center justify-between mb-3">
-              <h4 class="font-bold text-white">تغییرات زنده</h4>
-              <span class="text-xs text-gray-400">در مرحله بعدی فعال می‌شود</span>
+              <h4 class="font-bold text-gray-900 dark:text-white">تغییرات زنده</h4>
+              <span class="text-xs text-gray-500 dark:text-gray-400"
+                >در مرحله بعدی فعال می‌شود</span
+              >
             </div>
 
             <ul class="space-y-1">
-              <li class="text-center text-sm text-gray-500 py-6">
+              <li class="text-center text-sm text-gray-500 dark:text-gray-500 py-6">
                 هنوز داده زنده‌ای ثبت نشده است.
               </li>
             </ul>
           </div>
 
-          <div class="rounded-[2rem] border border-white/10 bg-white/5 p-5">
+          <div
+            class="rounded-[2rem] border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-white/5 p-5"
+          >
             <div class="flex items-center justify-between mb-3">
-              <h4 class="font-bold text-white">تاریخچه معاملات</h4>
-              <span class="text-xs text-gray-400">نمونه نمایشی</span>
+              <h4 class="font-bold text-gray-900 dark:text-white">تاریخچه معاملات</h4>
+              <span class="text-xs text-gray-500 dark:text-gray-400">نمونه نمایشی</span>
             </div>
 
             <div class="space-y-3">
               @for (item of tradeJournal; track item.text) {
-                <div class="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
+                <div
+                  class="rounded-[1.5rem] border border-gray-200 dark:border-white/10 bg-white dark:bg-white/5 p-4"
+                >
                   <div class="flex items-center justify-between mb-2">
                     <span class="text-xs font-black" [ngClass]="item.tone">
                       {{ item.side }}
                     </span>
 
-                    <span class="text-xs text-gray-400">
+                    <span class="text-xs text-gray-500 dark:text-gray-400">
                       {{ item.time }}
                     </span>
                   </div>
 
-                  <p class="text-sm text-gray-200">
+                  <p class="text-sm text-gray-700 dark:text-gray-200">
                     {{ item.text }}
                   </p>
 
-                  <p class="text-xs text-green-400 mt-2">
+                  <p class="text-xs text-green-600 dark:text-green-400 mt-2">
                     {{ item.result }}
                   </p>
                 </div>

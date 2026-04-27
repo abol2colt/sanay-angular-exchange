@@ -436,11 +436,16 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Central connection orchestration service created
+- [x] Binance to Nobitex to Fake fallback chain added
+- [x] Active connection ownership added with provider-specific connection types
+- [x] Unified live ticker handler added for store updates
+- [x] Binance connection timeout added
+- [x] Previous provider cleanup added before fallback transitions
+- [x] App startup connected to orchestration after market data hydration
+- [x] Browser-only startup guard added for live connection flow
+- [x] Market, asset, watchlist, and modal verified with centralized live updates
 
 ---
 
@@ -468,11 +473,22 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+### Work Log
+
+- [x] Branch started
+- [x] Theme mode ownership moved into a dedicated service
+- [x] Theme state exposed through readable computed values
+- [x] Browser-only theme access guarded for server rendering safety
+- [x] Local storage theme persistence verified
+- [x] Tailwind v4 dark variant configured
+- [x] Global styles simplified to avoid Tailwind v4 apply conflicts
+- [x] Main layout polished with centered capsule navigation
+- [x] Mobile bottom navigation added for small screens
+- [x] Home page light and dark mode contrast fixed
+- [x] Home visual replaced with inline SVG to avoid image background issues
+- [x] Home market preview connected back to parent-provided coin data
+- [x] Trading modal light and dark mode styles reviewed
+- [x] Theme flow tested successfully in browser
 
 ## Branch: `feat/login-shell`
 

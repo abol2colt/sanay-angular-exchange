@@ -1,105 +1,192 @@
-<section id="home-hero-section" class="home-section-shell home-hero-section">
-  <div class="home-section-container">
-    <div class="home-hero-grid">
-      <div class="home-hero-copy">
-        <div class="space-y-6">
-          <h1 class="home-hero-title">
-            تجربه‌ای حرفه‌ای
-            <br />
-            در بازار کریپتو
+<section class="relative overflow-hidden bg-slate-50 py-14 dark:bg-[#070b0f] md:py-20 lg:py-24">
+  <div
+    class="pointer-events-none absolute right-[-10rem] top-10 h-80 w-80 rounded-full bg-yellow-400/20 blur-3xl dark:bg-yellow-500/10"
+  ></div>
+  <div
+    class="pointer-events-none absolute bottom-0 left-[-8rem] h-72 w-72 rounded-full bg-sky-400/15 blur-3xl dark:bg-sky-500/10"
+  ></div>
+
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
+      <div class="space-y-8">
+        <div
+          class="inline-flex items-center gap-2 rounded-full border border-yellow-500/25 bg-yellow-500/10 px-4 py-2 text-sm font-bold text-yellow-700 dark:text-yellow-400"
+        >
+          <span class="h-2.5 w-2.5 rounded-full bg-yellow-500"></span>
+          تجربه نمایشی بازار با داده زنده و مسیر fallback
+        </div>
+
+        <div class="space-y-5">
+          <h1
+            class="max-w-[11ch] text-5xl font-black leading-[0.96] tracking-tight text-slate-950 dark:text-white sm:text-6xl lg:text-7xl"
+          >
+            تجربه‌ای حرفه‌ای در بازار کریپتو
           </h1>
 
-          <p class="home-hero-text">
-            Sanay یک تجربه مدرن، سریع و حرفه‌ای شبیه صرافی واقعی می‌سازد؛ از بازار و دیده‌بان تا
-            صفحه دارایی و جریان محصول، بدون اجرای واقعی معامله.
+          <p class="max-w-2xl text-base leading-8 text-slate-600 dark:text-slate-300 md:text-lg">
+            یک رابط نمایشی برای بازار رمزارز است که از صفحه خانه تا بازار، دیدبان و صفحه دارایی را
+            با داده زنده، معماری تمیز و تجربه کاربری نرم به هم وصل می‌کند.
           </p>
         </div>
 
-        <div class="flex flex-wrap gap-4 pt-2">
-          <a routerLink="/login" class="home-cta-primary">شروع تجربه</a>
-          <a routerLink="/market" class="home-cta-secondary">مشاهده بازار</a>
+        <div class="flex flex-wrap items-center gap-4">
+          <a
+            routerLink="/market"
+            class="inline-flex items-center justify-center rounded-2xl bg-yellow-500 px-6 py-3.5 text-base font-black text-black shadow-lg shadow-yellow-500/20 transition hover:bg-yellow-400"
+          >
+            شروع تجربه
+          </a>
+
+          <a
+            routerLink="/watchlist"
+            class="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-6 py-3.5 text-base font-black text-slate-900 shadow-sm transition hover:bg-slate-100 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+          >
+            مشاهده دیدبان
+          </a>
         </div>
 
-        <div class="home-hero-trust-row">
-          <span class="home-hero-trust-chip">داده زنده</span>
-          <span class="home-hero-trust-chip">دیده‌بان هوشمند</span>
-          <span class="home-hero-trust-chip">رابط حرفه‌ای</span>
+        <div class="flex flex-wrap gap-3">
+          <div
+            class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+          >
+            داده زنده
+          </div>
+          <div
+            class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+          >
+            دیدبان هوشمند
+          </div>
+          <div
+            class="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300"
+          >
+            رابط حرفه‌ای
+          </div>
         </div>
 
-        <div class="home-hero-metrics">
-          <div class="home-hero-metric-card">
-            <span class="home-hero-metric-value">10+</span>
-            <span class="home-hero-metric-label">دارایی فعال</span>
+        <div class="grid gap-4 sm:grid-cols-3">
+          <div
+            class="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/60 dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/20"
+          >
+            <div class="text-3xl font-black text-slate-950 dark:text-white">10+</div>
+            <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">دارایی فعال</div>
           </div>
 
-          <div class="home-hero-metric-card">
-            <span class="home-hero-metric-value">LIVE</span>
-            <span class="home-hero-metric-label">قیمت پویا</span>
+          <div
+            class="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/60 dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/20"
+          >
+            <div class="text-3xl font-black text-slate-950 dark:text-white">LIVE</div>
+            <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">قیمت پویا</div>
           </div>
 
-          <div class="home-hero-metric-card">
-            <span class="home-hero-metric-value">SMART</span>
-            <span class="home-hero-metric-label">جریان محصول</span>
+          <div
+            class="rounded-3xl border border-slate-200 bg-white p-5 shadow-xl shadow-slate-200/60 dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/20"
+          >
+            <div class="text-3xl font-black text-slate-950 dark:text-white">SMART</div>
+            <div class="mt-2 text-sm text-slate-500 dark:text-slate-400">جریان محصول</div>
           </div>
         </div>
       </div>
 
-      <div class="home-hero-visual">
-        <div class="home-hero-glow home-hero-glow-one"></div>
-        <div class="home-hero-glow home-hero-glow-two"></div>
-
-        <div class="home-hero-device">
-          <div class="home-hero-device-top">
-            <span class="home-hero-device-chip">SANAY</span>
-            <span class="home-hero-device-status">رابط زنده</span>
+      <div class="relative">
+        <div
+          class="relative mx-auto max-w-[560px] overflow-hidden rounded-[2.75rem] border border-slate-200 bg-white p-6 shadow-2xl shadow-slate-300/60 dark:border-white/10 dark:bg-white/[0.045] dark:shadow-black/40"
+        >
+          <div
+            class="absolute right-6 top-6 z-10 rounded-3xl border border-slate-200 bg-slate-800 px-5 py-4 text-white shadow-xl dark:border-white/10"
+          >
+            <div class="text-xs uppercase tracking-[0.25em] text-slate-400">Live</div>
+            <div class="mt-1 text-2xl font-black">Market Flow</div>
           </div>
 
-          <div class="home-hero-device-body">
-            <div class="home-hero-chart-card">
-              <div class="home-hero-chart-header">
-                <span>نبض بازار</span>
-                <span>BTC / ETH / SOL</span>
-              </div>
+          <div
+            class="absolute bottom-6 left-6 z-10 rounded-3xl border border-slate-200 bg-slate-800 px-5 py-4 text-white shadow-xl dark:border-white/10"
+          >
+            <div class="text-xs uppercase tracking-[0.25em] text-slate-400">Fallback</div>
+            <div class="mt-1 text-2xl font-black">Safe Data</div>
+          </div>
 
-              <div class="home-hero-chart-line">
-                <span class="home-hero-line home-hero-line-one"></span>
-                <span class="home-hero-line home-hero-line-two"></span>
-                <span class="home-hero-line home-hero-line-three"></span>
-              </div>
-            </div>
+          <div class="flex min-h-[420px] items-center justify-center">
+            <svg
+              viewBox="0 0 520 420"
+              class="h-auto w-full max-w-[420px]"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="255" cy="215" r="165" fill="url(#glow)" opacity="0.25" />
 
-            <div class="home-hero-order-card">
-              <div class="home-hero-order-row">
-                <span>وضعیت</span>
-                <strong>Mock Live</strong>
-              </div>
+              <circle cx="112" cy="302" r="23" fill="#60A5FA" />
+              <circle cx="92" cy="260" r="14" fill="#93C5FD" />
+              <circle cx="145" cy="252" r="11" fill="#3B82F6" />
 
-              <div class="home-hero-order-row">
-                <span>دیده‌بان</span>
-                <strong>BTC / TON</strong>
-              </div>
+              <rect x="135" y="140" width="260" height="185" rx="42" fill="#C8E7F1" />
+              <rect x="155" y="164" width="225" height="150" rx="34" fill="#B7D7F4" />
+              <rect x="285" y="194" width="78" height="58" rx="18" fill="#4B8DD6" />
+              <rect x="180" y="270" width="155" height="22" rx="11" fill="#4B8DD6" />
 
-              <div class="home-hero-order-row">
-                <span>تمرکز</span>
-                <strong>Asset Flow</strong>
-              </div>
-            </div>
+              <rect
+                x="158"
+                y="96"
+                width="215"
+                height="150"
+                rx="34"
+                transform="rotate(-10 158 96)"
+                fill="#F7DDA3"
+              />
+              <rect
+                x="136"
+                y="132"
+                width="220"
+                height="150"
+                rx="34"
+                transform="rotate(6 136 132)"
+                fill="#BDE6E7"
+              />
+              <rect
+                x="152"
+                y="163"
+                width="230"
+                height="155"
+                rx="34"
+                transform="rotate(-9 152 163)"
+                fill="#F8B8C8"
+              />
+
+              <path
+                d="M205 92C188 58 156 50 136 61C153 62 164 74 170 90C151 85 127 90 114 112C144 106 170 115 188 134"
+                fill="#FACC15"
+              />
+              <path
+                d="M314 92C331 58 363 50 383 61C366 62 355 74 349 90C368 85 392 90 405 112C375 106 349 115 331 134"
+                fill="#FACC15"
+              />
+
+              <path
+                d="M172 230C202 205 222 225 247 208C267 194 287 210 307 195C327 180 352 190 374 176"
+                stroke="#EAB308"
+                stroke-width="8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+
+              <path d="M92 132L118 92L145 132H92Z" fill="#BAE6FD" />
+              <path d="M100 188L137 175L127 212L100 188Z" fill="#99F6E4" />
+
+              <defs>
+                <radialGradient
+                  id="glow"
+                  cx="0"
+                  cy="0"
+                  r="1"
+                  gradientUnits="userSpaceOnUse"
+                  gradientTransform="translate(255 215) rotate(90) scale(165)"
+                >
+                  <stop stop-color="#FACC15" />
+                  <stop offset="1" stop-color="#FACC15" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+            </svg>
           </div>
         </div>
-
-        <div class="home-floating-card home-floating-card-left">
-          <span class="home-floating-label">امنیت</span>
-          <strong class="home-floating-value">چندلایه</strong>
-        </div>
-
-        <div class="home-floating-card home-floating-card-right">
-          <span class="home-floating-label">اتصال</span>
-          <strong class="home-floating-value">Fallback</strong>
-        </div>
-
-        <div class="home-coin-orb home-coin-orb-btc">BTC</div>
-        <div class="home-coin-orb home-coin-orb-eth">ETH</div>
-        <div class="home-coin-orb home-coin-orb-sol">SOL</div>
       </div>
     </div>
   </div>
