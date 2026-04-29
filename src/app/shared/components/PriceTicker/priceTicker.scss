@@ -1,19 +1,27 @@
 .ticker-container {
-  overflow: hidden; // نوار اضافی رو مخفی کن
-  background: #1a1a1a; padding: 10px 0;
+  overflow: hidden;
+  padding: 12px 0;
+  // حذف background هاردکد شده و استفاده از کلاس‌های Tailwind در HTML پیشنهاد می‌شود
 }
 
 .ticker-wrapper {
   display: flex;
   width: max-content;
-  animation: marquee 15s linear infinite , ; // موتور حرکت 🏎️
+  // سرعت انیمیشن را بر اساس تعداد کوین‌ها تنظیم کن (مثلاً ۳۰ ثانیه)
+  animation: marquee 20s linear infinite;
 
-  &.paused { animation-play-state: paused; } // توقف با کلاس داینامیک
+  &.paused { 
+    animation-play-state: paused; 
+  }
 }
 
-.ticker-list { display: flex; gap: 80px; padding-right: 80px; }
+.ticker-list { 
+  display: flex; 
+  gap: 25px; 
+  padding-right: 25px; 
+}
 
 @keyframes marquee {
- /*0% { transform: translateX(0); }*/
- 100% { transform: translateX(-180%); } // حرکت به سمت چپ
+  0% { transform: translateX(0); }
+  90% { transform: translateX(-50%); } // چون محتوا دو برابر شده، تا ۵۰ درصد یعنی یک دور کامل
 }

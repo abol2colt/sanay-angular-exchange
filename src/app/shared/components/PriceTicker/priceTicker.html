@@ -1,12 +1,20 @@
-<div class="ticker-container" (mouseenter)="isPaused.set(true)" (mouseleave)="isPaused.set(false)">
+<div
+  class="ticker-container border-b border-slate-200 dark:border-white/5 bg-white dark:bg-[#070b0f] transition-colors duration-500"
+  (mouseenter)="isPaused.set(true)"
+  (mouseleave)="isPaused.set(false)"
+>
   <div class="ticker-wrapper" [ngClass]="{ paused: isPaused() }">
-    @for (i of [1]; track i) {
+    @for (i of [1, 2]; track i) {
       <div class="ticker-list">
         @for (coin of topCoins(); track coin.symbol) {
-          <div class="ticker-item">
-            <span class="symbol">{{ coin.symbol.toUpperCase() }}</span>
-            <span class="price">${{ format(coin.price) }}</span>
-            <span [ngClass]="getMeta(coin.change24h).className">
+          <div class="ticker-item flex items-center gap-2">
+            <span class="symbol font-black text-slate-500 dark:text-slate-400">{{
+              coin.symbol.toUpperCase()
+            }}</span>
+            <span class="price font-mono font-bold text-slate-900 dark:text-white"
+              >${{ format(coin.price) }}</span
+            >
+            <span [ngClass]="getMeta(coin.change24h).className" class="text-xs font-bold">
               {{ getMeta(coin.change24h).label }}
             </span>
           </div>
