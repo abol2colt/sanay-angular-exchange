@@ -1,0 +1,14 @@
+@if (isVisible()) {
+  <div
+    class="fixed inset-0 z-[10000] flex items-center justify-center bg-pure-black transition-opacity duration-1000 ease-in-out"
+    [class.opacity-0]="isFadingOut()"
+    [class.opacity-100]="!isFadingOut()"
+  >
+    <img
+      src="/LOGOSANAYEX.png"
+      alt="Sanay Logo"
+      class="animate-intro-logo h-full w-full object-cover"
+      (load)="onImageLoaded()"
+    />
+  </div>
+}

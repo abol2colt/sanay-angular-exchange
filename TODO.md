@@ -492,7 +492,11 @@
 
 ## Branch: [feature/dashboard-foundation-and-theme]
 
--[x] Refactored `MarketStoreService`: - Added `getNormalizedKey` for consistent symbol sanitization. - Improved `normalizeSymbol` to accurately retrieve coins from state. - Optimized `updateCoinPrice` to handle real-time updates with normalized keys. - Added `sortedCoins` computed signal to identify top market movers. -[x] Created `PriceTickerComponent`: - Implemented a smooth, infinite marquee animation using CSS/SCSS. - Added 'Pause on Hover' functionality using Angular Signals (`isPaused`). - Integrated `price-helpers` for formatted prices and change indicators. -[x] Implemented `ThemeService`: - Managed Dark/Light mode using Signals and LocalStorage for persistence. - Utilized `effect()` to sync theme changes with the DOM's root element. -[x] Cleanup: Removed unused imports and refined service injections.
+-[x] Refactored `MarketStoreService`: - Added `getNormalizedKey` for consistent symbol sanitization. - Improved `normalizeSymbol` to accurately retrieve coins from state. - Optimized `updateCoinPrice` to handle real-time updates with normalized keys. - Added `sortedCoins` computed signal to identify top market movers.
+
+- [x] Created `PriceTickerComponent`: - Implemented a smooth, infinite marquee animation using CSS/SCSS. - Added 'Pause on Hover' functionality using Angular Signals (`isPaused`). - Integrated `price-helpers` for formatted prices and change indicators.
+- [x] Implemented `ThemeService`: - Managed Dark/Light mode using Signals and LocalStorage for persistence. - Utilized `effect()` to sync theme changes with the DOM's root element.
+- [x] Cleanup: Removed unused imports and refined service injections.
 
 ## Branch: `feat/login-shell`
 
@@ -509,13 +513,39 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] Login page component connected to route
+- [x] Glassmorphism effect added to match home page theme
+- [x] Light and dark mode transitions applied to form elements
+- [x] Form submission prevented to keep logic out for this phase
+- [x] Shell polished and tested in browser
 
 ---
+
+## Branch: `feat/auth-logic-and-intro`
+
+### Tasks
+
+- Build auth service with signal state
+  سرویس احراز هویت با استفاده از سیگنال‌ها ساخته شود تا وضعیت کاربر (لاگین شده یا نه) را در کل برنامه مدیریت کند.
+- Connect auth state to local storage
+  وضعیت ورود کاربر در حافظه مرورگر ذخیره شود تا با رفرش کردن صفحه از بین نرود.
+- Add signup flow to login shell
+  حالت ثبت‌نام به پوسته لاگین اضافه شود تا کاربر بتواند بین فرم ورود و ثبت‌نام جابه‌جا شود.
+- Build intro splash screen
+  صفحه معرفی (Intro) ساخته شود تا در اولین ورود کاربر به سایت، پیام خوش‌آمدگویی و برندینگ نمایش داده شود.
+- Orchestrate app startup flow
+  مسیر بالا آمدن برنامه مدیریت شود: ابتدا نمایش اینترو، سپس هدایت به خانه (یا لاگین در صورت نیاز).
+
+### Work Log
+
+- [x] Branch started
+- [x] AuthService created with Signal-based state management
+- [x] LocalStorage integration for auth persistence added
+- [x] Login/Signup toggle logic implemented in LoginComponent
+- [x] Glassmorphism UI with background haze (yellow/blue) applied to Auth shell
+- [ ] Intro splash screen implementation
+- [ ] Auth guard and startup orchestration
 
 ## Branch: `chore/final-polish-and-docs`
 
@@ -535,11 +565,15 @@
 
 ### Work Log
 
-- [ ] Branch started
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+- [x] Branch started
+- [x] AuthService implemented with Signal-based state and LocalStorage persistence
+- [x] Local user database (Mock DB) added to LocalStorage for signup/login flow
+- [x] Glassmorphic Login/Signup shell with background glow effects (Yellow/Blue)
+- [x] Full-screen cinematic Splash screen created using `LOGOSANAYEX.png`
+- [x] Implemented "Animation Freeze" mechanism using `body.splash-active` to sync Intro and Home
+- [x] Added directional staggered animations (Hero from right, Features from left, Market from bottom)
+- [x] Home page entrance polished with smooth cubic-bezier transitions
+- [x] Splash screen configured to trigger on every refresh for brand consistency
 
 ---
 

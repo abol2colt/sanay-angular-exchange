@@ -4,10 +4,12 @@ import { RouterOutlet } from '@angular/router';
 import { MarketDataLoaderService } from './core/services/market-data-loader.service';
 import { ConnectionOrchestrationService } from './core/services/connection-orchestration.service';
 import { ThemeService } from './core/services/theme.service';
+import { SplashComponent } from './shared/components/splash/splash';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, SplashComponent],
+  standalone: true,
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
