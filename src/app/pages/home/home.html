@@ -1,5 +1,13 @@
-<div class="overflow-hidden">
-  <app-home-hero-section></app-home-hero-section>
-  <app-home-features-section></app-home-features-section>
-  <app-home-market-preview-section [coins]="previewCoins()"></app-home-market-preview-section>
+<div class="relative overflow-hidden">
+  <div class="animate-from-right delay-hero">
+    <app-home-hero-section></app-home-hero-section>
+  </div>
+
+  <div class="animate-from-left delay-features">
+    <app-home-features-section></app-home-features-section>
+  </div>
+
+  <div class="animate-from-bottom delay-market">
+    <app-home-market-preview-section [coins]="previewCoins()"></app-home-market-preview-section>
+  </div>
 </div>

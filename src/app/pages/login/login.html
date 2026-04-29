@@ -1,76 +1,70 @@
-<section class="relative flex min-h-[70vh] items-center justify-center overflow-hidden px-4 py-8">
+<section class="relative flex min-h-screen items-center justify-center overflow-hidden px-4 py-12">
   <div
-    class="pointer-events-none absolute right-[-5rem] top-[-5rem] h-80 w-80 rounded-full bg-yellow-400/20 blur-3xl dark:bg-yellow-500/10"
+    class="pointer-events-none absolute right-[-5rem] top-[-5rem] h-[30rem] w-[30rem] rounded-full bg-yellow-400/20 blur-[100px] dark:bg-yellow-500/10"
   ></div>
   <div
-    class="pointer-events-none absolute bottom-[-5rem] left-[-5rem] h-72 w-72 rounded-full bg-sky-400/15 blur-3xl dark:bg-sky-500/10"
+    class="pointer-events-none absolute bottom-[-5rem] left-[-5rem] h-[25rem] w-[25rem] rounded-full bg-blue-400/20 blur-[100px] dark:bg-blue-500/10"
   ></div>
 
   <div
-    class="relative w-full max-w-md rounded-[2rem] border border-slate-200 bg-white/80 p-8 shadow-xl shadow-slate-200/60 backdrop-blur-2xl transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/20 sm:p-10"
+    class="relative w-full max-w-[440px] rounded-[2.5rem] border border-white/20 bg-white/40 p-10 shadow-2xl backdrop-blur-2xl transition-all duration-500 dark:border-white/5 dark:bg-white/[0.03] dark:shadow-black/40"
   >
-    <div class="mb-8 text-center">
-      <h1 class="text-3xl font-black text-slate-950 dark:text-white">ورود به حساب</h1>
-      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
-        برای دسترسی به بازار و معامله وارد شوید
+    <div class="mb-10 text-center">
+      <h1 class="text-3xl font-black tracking-tight text-slate-900 dark:text-white">
+        {{ isLoginMode() ? 'ورود به حساب' : 'ساخت حساب جدید' }}
+      </h1>
+      <p class="mt-3 text-sm font-medium text-slate-600 dark:text-slate-400">
+        {{ isLoginMode() ? 'خوش آمدید! مشخصات خود را وارد کنید' : 'به خانواده ثنای خوش آمدید' }}
       </p>
     </div>
 
-    <form class="space-y-6" (submit)="$event.preventDefault()">
+    <form class="space-y-6" (submit)="handleAuth(); $event.preventDefault()">
       <div class="space-y-2">
-        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300"
+        <label
+          class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500"
           >ایمیل یا شماره موبایل</label
         >
-        <div class="relative">
-          <input
-            type="text"
-            class="dir-ltr w-full rounded-xl border border-slate-200 bg-white/50 px-4 py-3.5 text-left text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500 dark:border-white/10 dark:bg-black/20 dark:text-white dark:placeholder:text-slate-600"
-            placeholder="example@mail.com"
-          />
-        </div>
+        <input
+          type="text"
+          name="email"
+          [(ngModel)]="email"
+          class="dir-ltr w-full rounded-2xl border border-slate-200 bg-white/50 px-5 py-4 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 dark:border-white/10 dark:bg-black/40 dark:text-white"
+          placeholder="name@company.com"
+        />
       </div>
 
       <div class="space-y-2">
-        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">رمز عبور</label>
-        <div class="relative">
-          <input
-            type="password"
-            class="dir-ltr w-full rounded-xl border border-slate-200 bg-white/50 px-4 py-3.5 text-left text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500 dark:border-white/10 dark:bg-black/20 dark:text-white dark:placeholder:text-slate-600"
-            placeholder="••••••••"
-          />
-        </div>
-      </div>
-
-      <div class="mt-4 flex items-center justify-between text-sm font-medium">
-        <label class="flex cursor-pointer items-center gap-2">
-          <input
-            type="checkbox"
-            class="h-4 w-4 rounded border-slate-300 bg-slate-50 text-blue-600 transition-colors focus:ring-blue-500 dark:border-slate-600 dark:bg-black/20"
-          />
-          <span class="text-slate-600 dark:text-slate-400">مرا به خاطر بسپار</span>
-        </label>
-        <a
-          href="#"
-          class="text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-          >فراموشی رمز؟</a
+        <label
+          class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-500"
+          >رمز عبور</label
         >
+        <input
+          type="password"
+          name="password"
+          [(ngModel)]="password"
+          class="dir-ltr w-full rounded-2xl border border-slate-200 bg-white/50 px-5 py-4 text-slate-900 outline-none transition-all focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 dark:border-white/10 dark:bg-black/40 dark:text-white"
+          placeholder="••••••••"
+        />
       </div>
 
       <button
         type="submit"
-        class="mt-2 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-bold text-white shadow-sm shadow-blue-500/30 transition-colors duration-200 hover:bg-blue-700"
+        class="group relative w-full overflow-hidden rounded-2xl bg-blue-600 py-4 font-bold text-white shadow-lg shadow-blue-600/20 transition-all hover:bg-blue-700 hover:shadow-blue-600/40 active:scale-[0.98]"
       >
-        ورود به صرافی
+        <span class="relative z-10">{{ isLoginMode() ? 'ورود به پنل' : 'تایید و ثبت‌نام' }}</span>
       </button>
     </form>
 
-    <div class="mt-8 text-center text-sm font-medium text-slate-600 dark:text-slate-400">
-      حساب کاربری ندارید؟
-      <a
-        href="#"
-        class="mr-1 text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
-        >ثبت‌نام کنید</a
-      >
+    <div class="mt-10 border-t border-slate-200 pt-8 text-center dark:border-white/5">
+      <p class="text-sm font-medium text-slate-600 dark:text-slate-400">
+        {{ isLoginMode() ? 'هنوز عضو نشده‌اید؟' : 'قبلاً ثبت‌نام کرده‌اید؟' }}
+        <button
+          (click)="toggleMode()"
+          class="mr-1 font-bold text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+        >
+          {{ isLoginMode() ? 'ایجاد حساب کاربری' : 'ورود به حساب' }}
+        </button>
+      </p>
     </div>
   </div>
 </section>

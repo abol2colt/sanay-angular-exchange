@@ -171,3 +171,74 @@ html.dark ::-webkit-scrollbar-thumb {
     transition-duration: 1ms !important;
   }
 }
+
+/* انیمیشن برای ورود المان‌های صفحه از پایین به بالا */
+@keyframes slideUpEntrance {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-intro-logo {
+  animation: cinematicFadeIn 2.5s ease-out forwards;
+}
+
+.animate-section-entry {
+  opacity: 0; /* ابتدا مخفی */
+  animation: slideUpEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* تاخیرهای زمانی برای ورود پله‌ای */
+.delay-200 { animation-delay: 0.3s; }
+.delay-500 { animation-delay: 0.6s; }
+.delay-800 { animation-delay: 0.9s; }
+
+/* کلاس کمکی برای مشکی مطلق */
+.bg-pure-black { background-color: #000000 !important; }
+body.splash-active .animate-section-entry {
+  animation: none !important; /* انیمیشن متوقف می‌شود */
+  opacity: 0 !important; /* المان‌ها کامل مخفی می‌مانند */
+}
+/* --- انیمیشن‌های ورود از جهت‌های مختلف --- */
+@keyframes slideInFromRight {
+  0% { opacity: 0; transform: translateX(60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromLeft {
+  0% { opacity: 0; transform: translateX(-60px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromBottom {
+  0% { opacity: 0; transform: translateY(60px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* کلاس‌های اجرایی انیمیشن */
+.animate-from-right {
+  opacity: 0; 
+  animation: slideInFromRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-from-left {
+  opacity: 0;
+  animation: slideInFromLeft 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-from-bottom {
+  opacity: 0;
+  animation: slideInFromBottom 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* تنظیم دقیق تاخیرها (Staggering) */
+.delay-hero { animation-delay: 100ms; }
+.delay-features { animation-delay: 500ms; }
+.delay-market { animation-delay: 900ms; }
+
+/* فریز کردن تمام این انیمیشن‌ها تا زمانی که اینترو تموم بشه */
+body.splash-active .animate-from-right,
+body.splash-active .animate-from-left,
+body.splash-active .animate-from-bottom {
+  animation: none !important;
+  opacity: 0 !important;
+}
