@@ -1,0 +1,19 @@
+.ticker-container {
+  overflow: hidden; // نوار اضافی رو مخفی کن
+  background: #1a1a1a; padding: 10px 0;
+}
+
+.ticker-wrapper {
+  display: flex;
+  width: max-content;
+  animation: marquee 15s linear infinite , ; // موتور حرکت 🏎️
+
+  &.paused { animation-play-state: paused; } // توقف با کلاس داینامیک
+}
+
+.ticker-list { display: flex; gap: 80px; padding-right: 80px; }
+
+@keyframes marquee {
+ /*0% { transform: translateX(0); }*/
+ 100% { transform: translateX(-180%); } // حرکت به سمت چپ
+}

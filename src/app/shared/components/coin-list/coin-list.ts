@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Coin } from '../../../core/models/coin.model';
 import { CoinRowComponent } from '../coin-row/coin-row';
 
@@ -10,4 +10,10 @@ import { CoinRowComponent } from '../coin-row/coin-row';
 })
 export class CoinListComponent {
   @Input() coins: Coin[] = [];
+
+  @Output() toggleWatchlist = new EventEmitter<string>();
+
+  onToggle(symbol: string) {
+    this.toggleWatchlist.emit(symbol);
+  }
 }

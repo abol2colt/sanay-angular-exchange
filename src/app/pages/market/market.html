@@ -34,7 +34,10 @@
   </header>
 
   @if (marketStore.filteredCoins().length) {
-    <app-coin-list [coins]="marketStore.filteredCoins()" />
+    <app-coin-list
+      [coins]="marketStore.filteredCoins()"
+      (toggleWatchlist)="handleToggleWatchlist($event)"
+    />
   } @else {
     <app-empty-state
       icon="🔎"

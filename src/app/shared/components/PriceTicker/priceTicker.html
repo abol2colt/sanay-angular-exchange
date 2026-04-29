@@ -1,0 +1,17 @@
+<div class="ticker-container" (mouseenter)="isPaused.set(true)" (mouseleave)="isPaused.set(false)">
+  <div class="ticker-wrapper" [ngClass]="{ paused: isPaused() }">
+    @for (i of [1]; track i) {
+      <div class="ticker-list">
+        @for (coin of topCoins(); track coin.symbol) {
+          <div class="ticker-item">
+            <span class="symbol">{{ coin.symbol.toUpperCase() }}</span>
+            <span class="price">${{ format(coin.price) }}</span>
+            <span [ngClass]="getMeta(coin.change24h).className">
+              {{ getMeta(coin.change24h).label }}
+            </span>
+          </div>
+        }
+      </div>
+    }
+  </div>
+</div>
