@@ -1,4 +1,76 @@
-<section class="space-y-4">
-  <h1 class="text-4xl font-black">لاگین</h1>
-  <p class="text-gray-500 dark:text-gray-400">پوسته اولیه صفحه لاگین آماده شد.</p>
+<section class="relative flex min-h-[70vh] items-center justify-center overflow-hidden px-4 py-8">
+  <div
+    class="pointer-events-none absolute right-[-5rem] top-[-5rem] h-80 w-80 rounded-full bg-yellow-400/20 blur-3xl dark:bg-yellow-500/10"
+  ></div>
+  <div
+    class="pointer-events-none absolute bottom-[-5rem] left-[-5rem] h-72 w-72 rounded-full bg-sky-400/15 blur-3xl dark:bg-sky-500/10"
+  ></div>
+
+  <div
+    class="relative w-full max-w-md rounded-[2rem] border border-slate-200 bg-white/80 p-8 shadow-xl shadow-slate-200/60 backdrop-blur-2xl transition-colors duration-300 dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/20 sm:p-10"
+  >
+    <div class="mb-8 text-center">
+      <h1 class="text-3xl font-black text-slate-950 dark:text-white">ورود به حساب</h1>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400">
+        برای دسترسی به بازار و معامله وارد شوید
+      </p>
+    </div>
+
+    <form class="space-y-6" (submit)="$event.preventDefault()">
+      <div class="space-y-2">
+        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300"
+          >ایمیل یا شماره موبایل</label
+        >
+        <div class="relative">
+          <input
+            type="text"
+            class="dir-ltr w-full rounded-xl border border-slate-200 bg-white/50 px-4 py-3.5 text-left text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500 dark:border-white/10 dark:bg-black/20 dark:text-white dark:placeholder:text-slate-600"
+            placeholder="example@mail.com"
+          />
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <label class="block text-sm font-bold text-slate-700 dark:text-slate-300">رمز عبور</label>
+        <div class="relative">
+          <input
+            type="password"
+            class="dir-ltr w-full rounded-xl border border-slate-200 bg-white/50 px-4 py-3.5 text-left text-slate-900 outline-none transition-all placeholder:text-slate-400 focus:border-transparent focus:ring-2 focus:ring-blue-500 dark:border-white/10 dark:bg-black/20 dark:text-white dark:placeholder:text-slate-600"
+            placeholder="••••••••"
+          />
+        </div>
+      </div>
+
+      <div class="mt-4 flex items-center justify-between text-sm font-medium">
+        <label class="flex cursor-pointer items-center gap-2">
+          <input
+            type="checkbox"
+            class="h-4 w-4 rounded border-slate-300 bg-slate-50 text-blue-600 transition-colors focus:ring-blue-500 dark:border-slate-600 dark:bg-black/20"
+          />
+          <span class="text-slate-600 dark:text-slate-400">مرا به خاطر بسپار</span>
+        </label>
+        <a
+          href="#"
+          class="text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+          >فراموشی رمز؟</a
+        >
+      </div>
+
+      <button
+        type="submit"
+        class="mt-2 w-full rounded-xl bg-blue-600 px-4 py-3.5 font-bold text-white shadow-sm shadow-blue-500/30 transition-colors duration-200 hover:bg-blue-700"
+      >
+        ورود به صرافی
+      </button>
+    </form>
+
+    <div class="mt-8 text-center text-sm font-medium text-slate-600 dark:text-slate-400">
+      حساب کاربری ندارید؟
+      <a
+        href="#"
+        class="mr-1 text-blue-600 transition-colors hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300"
+        >ثبت‌نام کنید</a
+      >
+    </div>
+  </div>
 </section>
