@@ -2,6 +2,6 @@
   class="bg-white dark:bg-white/5 border border-gray-200 dark:border-transparent rounded-[2.5rem] overflow-hidden shadow-xl dark:shadow-2xl"
 >
   @for (coin of coins; track coin.symbol) {
-    <app-coin-row [coin]="coin" />
+    <app-coin-row [coin]="coin" (toggle)="onToggle($event)" />
   }
 </div>

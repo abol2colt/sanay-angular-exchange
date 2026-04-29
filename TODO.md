@@ -490,6 +490,10 @@
 - [x] Trading modal light and dark mode styles reviewed
 - [x] Theme flow tested successfully in browser
 
+## Branch: [feature/dashboard-foundation-and-theme]
+
+-[x] Refactored `MarketStoreService`: - Added `getNormalizedKey` for consistent symbol sanitization. - Improved `normalizeSymbol` to accurately retrieve coins from state. - Optimized `updateCoinPrice` to handle real-time updates with normalized keys. - Added `sortedCoins` computed signal to identify top market movers. -[x] Created `PriceTickerComponent`: - Implemented a smooth, infinite marquee animation using CSS/SCSS. - Added 'Pause on Hover' functionality using Angular Signals (`isPaused`). - Integrated `price-helpers` for formatted prices and change indicators. -[x] Implemented `ThemeService`: - Managed Dark/Light mode using Signals and LocalStorage for persistence. - Utilized `effect()` to sync theme changes with the DOM's root element. -[x] Cleanup: Removed unused imports and refined service injections.
+
 ## Branch: `feat/login-shell`
 
 ### Tasks

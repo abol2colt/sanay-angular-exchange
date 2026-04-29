@@ -37,7 +37,13 @@ export class MarketStoreService {
   connectionStatus = computed(() => this.connectionStatusState());
 
   setCoins(coins: Record<string, Coin>): void {
-    this.coinsState.set({ ...coins });
+    const normalizedCoins: Record<string, Coin> = {};
+    for (const key in coins) {
+      if (coins.hasOwnProperty(key)) {
+        normalizedCoins[key.trim().toLowerCase()] = coins[key];
+      }
+    }
+    this.coinsState.set({ ...normalizedCoins });
   }
 
   setSearchQuery(query: string): void {
@@ -52,6 +58,29 @@ export class MarketStoreService {
         ? current.filter((item) => item !== normalized)
         : [...current, normalized];
     });
+  }
+
+  hasWatchlistItems = computed(() => this.watchListCount() > 0);
+  watchListCount = computed(() => {
+    const allWatch = this.watchlistCoins();
+    return allWatch.length;
+  });
+
+  sortedCoins = computed(() => {
+    const allCoins = this.coins();
+    return [...allCoins].sort((a, b) => Math.abs(b.change24h) - Math.abs(a.change24h)).slice(0, 3);
+  });
+
+  normalizeSymbol(symbol: string) {
+    const symbolNormal = this.getNormalizedKey(symbol);
+    return this.coinsState()[symbolNormal];
+  }
+
+  getNormalizedKey(symbol: string) {
+    return symbol
+      .trim()
+      .toLocaleLowerCase()
+      .replace(/[^a-z0-9]/g, '');
   }
 
   isInWatchlist(symbol: string): boolean {
@@ -71,7 +100,7 @@ export class MarketStoreService {
   }
 
   updateCoinPrice(symbol: string, newPrice: number, change24h?: number): void {
-    const normalized = symbol.trim().toLowerCase();
+    const normalized = this.getNormalizedKey(symbol);
 
     this.coinsState.update((current) => {
       const coin = current[normalized];

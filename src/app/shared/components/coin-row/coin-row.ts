@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, Output, inject, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { Coin } from '../../../core/models/coin.model';
@@ -14,6 +14,8 @@ import { formatPrice, getChangeMeta } from '../../utils/price-helpers';
 })
 export class CoinRowComponent {
   @Input() coin!: Coin;
+
+  @Output() toggle = new EventEmitter<string>();
 
   private router = inject(Router);
   private marketStore = inject(MarketStoreService);
@@ -52,9 +54,8 @@ export class CoinRowComponent {
 
   toggleWatchlist(event: MouseEvent): void {
     event.stopPropagation();
-    this.marketStore.toggleWatchlist(this.symbol);
+    this.toggle.emit(this.symbol);
   }
-
   openAssetPage(): void {
     this.router.navigate(['/asset', this.symbol]);
   }

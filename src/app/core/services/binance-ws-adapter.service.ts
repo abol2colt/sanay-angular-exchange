@@ -153,5 +153,11 @@ export class BinanceWsAdapterService {
 
     return normalized;
   }
+  private normalizeSymbol(symbol: string): string {
+    return String(symbol || '')
+      .trim()
+      .toLowerCase()
+      .replace(/[a-z0-9]/g, '');
+  }
 }
 //BinanceWsAdapterService → onTicker → ConnectionOrchestrationService → MarketStoreService → UI reactive update
