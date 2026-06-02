@@ -1,6 +1,6 @@
-import { Component, signal, inject } from '@angular/core';
-import { AuthService } from '../../core/services/auth.service';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,26 +11,29 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
   private authService = inject(AuthService);
 
-  // سیگنال برای جابه‌جایی بین حالت ورود و ثبت‌نام
   isLoginMode = signal(true);
+  errorMessage = signal('');
 
-  // مدل‌های داده برای فرم
   email = '';
   password = '';
 
-  toggleMode() {
-    this.isLoginMode.update((val) => !val);
+  toggleMode(): void {
+    this.errorMessage.set('');
+    this.isLoginMode.update((value) => !value);
   }
-  handleAuth() {
-    if (!this.email) {
-      alert('لطفاً ایمیل یا موبایل را وارد کنید.');
+
+  handleAuth(): void {
+    const email = this.email.trim();
+
+    if (!email) {
+      this.errorMessage.set('لطفاً ایمیل یا موبایل را وارد کنید.');
       return;
     }
 
-    if (this.isLoginMode()) {
-      this.authService.login(this.email, this.password);
-    } else {
-      this.authService.signup(this.email, this.password);
-    }
+    const result = this.isLoginMode()
+      ? this.authService.login(email, this.password)
+      : this.authService.signup(email, this.password);
+
+    this.errorMessage.set(result.message ?? '');
   }
 }

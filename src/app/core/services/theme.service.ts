@@ -12,7 +12,6 @@ const DEFAULT_THEME: ThemeMode = 'dark';
 export class ThemeService {
   private platformId = inject(PLATFORM_ID);
   private document = inject(DOCUMENT);
-
   private themeState = signal<ThemeMode>(DEFAULT_THEME);
 
   theme = computed(() => this.themeState());
@@ -39,22 +38,12 @@ export class ThemeService {
     this.themeState.set(theme);
     this.applyTheme(theme);
 
-    if (!isPlatformBrowser(this.platformId)) {
-      return;
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem(THEME_STORAGE_KEY, theme);
     }
-
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
   }
 
   private applyTheme(theme: ThemeMode): void {
-    const html = this.document.documentElement;
-
-    if (theme === 'dark') {
-      html.classList.add('dark');
-      return;
-    }
-
-    html.classList.remove('dark');
-    console.log('after class:', html.className);
+    this.document.documentElement.classList.toggle('dark', theme === 'dark');
   }
 }

@@ -540,12 +540,14 @@
 ### Work Log
 
 - [x] Branch started
-- [x] AuthService created with Signal-based state management
-- [x] LocalStorage integration for auth persistence added
-- [x] Login/Signup toggle logic implemented in LoginComponent
-- [x] Glassmorphism UI with background haze (yellow/blue) applied to Auth shell
-- [ ] Intro splash screen implementation
-- [ ] Auth guard and startup orchestration
+- [x] AuthService implemented with Signal-based state and LocalStorage persistence
+- [x] Local user database (Mock DB) added to LocalStorage for signup/login flow
+- [x] Glassmorphic Login/Signup shell with background glow effects (Yellow/Blue)
+- [x] Full-screen cinematic Splash screen created using `LOGOSANAYEX.png`
+- [x] Implemented "Animation Freeze" mechanism using `body.splash-active` to sync Intro and Home
+- [x] Added directional staggered animations (Hero from right, Features from left, Market from bottom)
+- [x] Home page entrance polished with smooth cubic-bezier transitions
+- [x] Splash screen configured to trigger on every refresh for brand consistency
 
 ## Branch: `chore/final-polish-and-docs`
 
@@ -565,15 +567,11 @@
 
 ### Work Log
 
-- [x] Branch started
-- [x] AuthService implemented with Signal-based state and LocalStorage persistence
-- [x] Local user database (Mock DB) added to LocalStorage for signup/login flow
-- [x] Glassmorphic Login/Signup shell with background glow effects (Yellow/Blue)
-- [x] Full-screen cinematic Splash screen created using `LOGOSANAYEX.png`
-- [x] Implemented "Animation Freeze" mechanism using `body.splash-active` to sync Intro and Home
-- [x] Added directional staggered animations (Hero from right, Features from left, Market from bottom)
-- [x] Home page entrance polished with smooth cubic-bezier transitions
-- [x] Splash screen configured to trigger on every refresh for brand consistency
+- [ ] Branch started
+- [ ]
+- [ ]
+- [ ]
+- [ ]
 
 ---
 
