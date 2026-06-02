@@ -1,10 +1,13 @@
-import { Component, signal, inject, OnInit, PLATFORM_ID } from '@angular/core';
-import { NgClass, isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, PLATFORM_ID, inject, signal } from '@angular/core';
+
+const SPLASH_HOLD_MS = 3500;
+const SPLASH_FADE_MS = 1000;
 
 @Component({
   selector: 'app-splash',
   standalone: true,
-  imports: [NgClass],
+  imports: [],
   templateUrl: './splash.html',
 })
 export class SplashComponent implements OnInit {
@@ -13,25 +16,26 @@ export class SplashComponent implements OnInit {
   isVisible = signal(true);
   isFadingOut = signal(false);
 
-  ngOnInit() {
-    // به محض شروع، یک کلاس به بادی می‌دهیم تا تمام انیمیشن‌ها قفل شوند
+  ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
       document.body.classList.add('splash-active');
     }
   }
 
-  onImageLoaded() {
+  onImageLoaded(): void {
     setTimeout(() => {
-      this.isFadingOut.set(true); // شروع محو شدن
+      this.isFadingOut.set(true);
 
       setTimeout(() => {
-        this.isVisible.set(false); // پایان کامل اینترو
+        this.isVisible.set(false);
+        this.releasePageAnimations();
+      }, SPLASH_FADE_MS);
+    }, SPLASH_HOLD_MS);
+  }
 
-        // وقتی لایه مشکی کامل رفت، قفل انیمیشن‌ها را باز می‌کنیم تا تازه شروع شوند!
-        if (isPlatformBrowser(this.platformId)) {
-          document.body.classList.remove('splash-active');
-        }
-      }, 1000);
-    }, 3500);
+  private releasePageAnimations(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.remove('splash-active');
+    }
   }
 }

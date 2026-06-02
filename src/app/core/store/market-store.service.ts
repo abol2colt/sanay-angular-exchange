@@ -13,9 +13,12 @@ export class MarketStoreService {
   private activeProviderState = signal('None');
   private connectionStatusState = signal<ConnectionStatus>(DEFAULT_CONNECTION_STATUS);
 
-  coins = computed(() => Object.values(this.coinsState()));
+  readonly coins = computed(() => Object.values(this.coinsState()));
+  readonly searchQuery = computed(() => this.searchQueryState());
+  readonly activeProvider = computed(() => this.activeProviderState());
+  readonly connectionStatus = computed(() => this.connectionStatusState());
 
-  filteredCoins = computed(() => {
+  readonly filteredCoins = computed(() => {
     const query = this.searchQueryState().trim().toLowerCase();
 
     if (!query) {
@@ -27,31 +30,50 @@ export class MarketStoreService {
     });
   });
 
-  watchlistCoins = computed(() => {
-    const watchlist = this.watchlistSymbolsState();
-    return this.coins().filter((coin) => watchlist.includes(coin.symbol));
+  readonly watchlistCoins = computed(() => {
+    const watchlist = new Set(this.watchlistSymbolsState());
+    return this.coins().filter((coin) => watchlist.has(this.getNormalizedKey(coin.symbol)));
   });
 
-  searchQuery = computed(() => this.searchQueryState());
-  activeProvider = computed(() => this.activeProviderState());
-  connectionStatus = computed(() => this.connectionStatusState());
+  readonly watchlistCount = computed(() => this.watchlistCoins().length);
+  readonly hasWatchlistItems = computed(() => this.watchlistCount() > 0);
+
+  readonly sortedCoins = computed(() => {
+    return [...this.coins()]
+      .sort((a, b) => Math.abs(b.change24h) - Math.abs(a.change24h))
+      .slice(0, 3);
+  });
 
   setCoins(coins: Record<string, Coin>): void {
-    const normalizedCoins: Record<string, Coin> = {};
-    for (const key in coins) {
-      if (coins.hasOwnProperty(key)) {
-        normalizedCoins[key.trim().toLowerCase()] = coins[key];
-      }
-    }
-    this.coinsState.set({ ...normalizedCoins });
+    const normalizedCoins = Object.entries(coins).reduce<Record<string, Coin>>(
+      (acc, [key, coin]) => {
+        const normalizedKey = this.getNormalizedKey(key || coin.symbol);
+
+        if (normalizedKey) {
+          acc[normalizedKey] = {
+            ...coin,
+            symbol: this.getNormalizedKey(coin.symbol),
+          };
+        }
+
+        return acc;
+      },
+      {},
+    );
+
+    this.coinsState.set(normalizedCoins);
   }
 
   setSearchQuery(query: string): void {
-    this.searchQueryState.set(query.toLowerCase());
+    this.searchQueryState.set(query.trim().toLowerCase());
   }
 
   toggleWatchlist(symbol: string): void {
-    const normalized = symbol.trim().toLowerCase();
+    const normalized = this.getNormalizedKey(symbol);
+
+    if (!normalized) {
+      return;
+    }
 
     this.watchlistSymbolsState.update((current) => {
       return current.includes(normalized)
@@ -60,47 +82,28 @@ export class MarketStoreService {
     });
   }
 
-  hasWatchlistItems = computed(() => this.watchListCount() > 0);
-  watchListCount = computed(() => {
-    const allWatch = this.watchlistCoins();
-    return allWatch.length;
-  });
-
-  sortedCoins = computed(() => {
-    const allCoins = this.coins();
-    return [...allCoins].sort((a, b) => Math.abs(b.change24h) - Math.abs(a.change24h)).slice(0, 3);
-  });
-
-  normalizeSymbol(symbol: string) {
-    const symbolNormal = this.getNormalizedKey(symbol);
-    return this.coinsState()[symbolNormal];
-  }
-
-  getNormalizedKey(symbol: string) {
-    return symbol
-      .trim()
-      .toLocaleLowerCase()
-      .replace(/[^a-z0-9]/g, '');
-  }
-
   isInWatchlist(symbol: string): boolean {
-    return this.watchlistSymbolsState().includes(symbol.trim().toLowerCase());
+    return this.watchlistSymbolsState().includes(this.getNormalizedKey(symbol));
   }
 
   getCoinBySymbol(symbol: string): Coin | null {
-    return this.coinsState()[symbol.trim().toLowerCase()] ?? null;
+    return this.coinsState()[this.getNormalizedKey(symbol)] ?? null;
   }
 
   setActiveProvider(provider: string): void {
-    this.activeProviderState.set(provider);
+    this.activeProviderState.set(provider.trim() || 'None');
   }
 
   setConnectionStatus(status: ConnectionStatus): void {
-    this.connectionStatusState.set(status);
+    this.connectionStatusState.set({ ...status });
   }
 
   updateCoinPrice(symbol: string, newPrice: number, change24h?: number): void {
     const normalized = this.getNormalizedKey(symbol);
+
+    if (!Number.isFinite(newPrice) || newPrice <= 0) {
+      return;
+    }
 
     this.coinsState.update((current) => {
       const coin = current[normalized];
@@ -114,9 +117,16 @@ export class MarketStoreService {
         [normalized]: {
           ...coin,
           price: newPrice,
-          change24h: change24h ?? coin.change24h,
+          change24h: Number.isFinite(change24h) ? Number(change24h) : coin.change24h,
         },
       };
     });
+  }
+
+  private getNormalizedKey(symbol: string): string {
+    return String(symbol || '')
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '');
   }
 }

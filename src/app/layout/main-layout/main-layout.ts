@@ -2,7 +2,7 @@ import { ThemeService } from '../../core/services/theme.service';
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { TradingModalComponent } from '../../shared/components/trading-modal/trading-modal';
-import { PriceTickerComponent } from '../../shared/components/PriceTicker/priceTicker';
+import { PriceTickerComponent } from '../../shared/components/price-ticker/price-ticker';
 
 @Component({
   selector: 'app-main-layout',

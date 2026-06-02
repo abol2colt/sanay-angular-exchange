@@ -37,7 +37,7 @@ body {
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
-    "Segoe UI",
+    'Segoe UI',
     sans-serif;
   transition:
     background-color var(--sanay-transition),
@@ -172,10 +172,28 @@ html.dark ::-webkit-scrollbar-thumb {
   }
 }
 
-/* انیمیشن برای ورود المان‌های صفحه از پایین به بالا */
+@keyframes cinematicFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.04);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes slideUpEntrance {
-  0% { opacity: 0; transform: translateY(40px); }
-  100% { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(2.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .animate-intro-logo {
@@ -183,40 +201,69 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 .animate-section-entry {
-  opacity: 0; /* ابتدا مخفی */
+  opacity: 0;
   animation: slideUpEntrance 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* تاخیرهای زمانی برای ورود پله‌ای */
-.delay-200 { animation-delay: 0.3s; }
-.delay-500 { animation-delay: 0.6s; }
-.delay-800 { animation-delay: 0.9s; }
-
-/* کلاس کمکی برای مشکی مطلق */
-.bg-pure-black { background-color: #000000 !important; }
-body.splash-active .animate-section-entry {
-  animation: none !important; /* انیمیشن متوقف می‌شود */
-  opacity: 0 !important; /* المان‌ها کامل مخفی می‌مانند */
+.delay-200 {
+  animation-delay: 300ms;
 }
-/* --- انیمیشن‌های ورود از جهت‌های مختلف --- */
+
+.delay-500 {
+  animation-delay: 600ms;
+}
+
+.delay-800 {
+  animation-delay: 900ms;
+}
+
+.bg-pure-black {
+  background-color: #000000 !important;
+}
+
+body.splash-active .animate-section-entry {
+  animation: none !important;
+  opacity: 0 !important;
+}
+
 @keyframes slideInFromRight {
-  0% { opacity: 0; transform: translateX(60px); }
-  100% { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(3.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInFromLeft {
-  0% { opacity: 0; transform: translateX(-60px); }
-  100% { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-3.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 @keyframes slideInFromBottom {
-  0% { opacity: 0; transform: translateY(60px); }
-  100% { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(3.75rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* کلاس‌های اجرایی انیمیشن */
 .animate-from-right {
-  opacity: 0; 
+  opacity: 0;
   animation: slideInFromRight 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
@@ -230,12 +277,18 @@ body.splash-active .animate-section-entry {
   animation: slideInFromBottom 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-/* تنظیم دقیق تاخیرها (Staggering) */
-.delay-hero { animation-delay: 100ms; }
-.delay-features { animation-delay: 500ms; }
-.delay-market { animation-delay: 900ms; }
+.delay-hero {
+  animation-delay: 100ms;
+}
 
-/* فریز کردن تمام این انیمیشن‌ها تا زمانی که اینترو تموم بشه */
+.delay-features {
+  animation-delay: 500ms;
+}
+
+.delay-market {
+  animation-delay: 900ms;
+}
+
 body.splash-active .animate-from-right,
 body.splash-active .animate-from-left,
 body.splash-active .animate-from-bottom {

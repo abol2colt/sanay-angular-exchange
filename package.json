@@ -6,8 +6,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:sanay-angular-exchange": "node dist/sanay-angular-exchange/server/server.mjs"
+    "test": "ng test --watch=false",
+    "typecheck": "ng build --configuration development",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "clean": "node -e \"const fs=require('fs'); for (const p of ['.angular','dist','out-tsc']) fs.rmSync(p,{recursive:true,force:true});\"",
+    "serve:ssr": "node dist/sanay-angular-exchange/server/server.mjs"
   },
   "private": true,
   "packageManager": "npm@10.9.3",
